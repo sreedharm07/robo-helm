@@ -22,14 +22,11 @@ pipeline{
            dir ('CHART'){
               git branch: 'main', url: 'https://github.com/sreedharm07/robo-helm.git'
             }
+            sh 'pwd'
           }
        }
 
-        stage('installing component'){
-           steps{
-            sh ' helm upgrade -i ${APPNAME} ./CHART  -f '
-                  }
-              }
 
-        }
+
+    }
  }
