@@ -27,7 +27,7 @@ pipeline{
 
         stage('installing component'){
            steps{
-            sh ' helm upgrade -i ${APPNAME} ./CHART  --set component=${APPNAME}'
+            sh ' helm upgrade -i ${APPNAME} ./CHART  -f '
                   }
               }
 
