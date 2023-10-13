@@ -19,7 +19,7 @@ pipeline{
            dir ('APP'){
              git branch: 'main', url: 'https://github.com/sreedharm07/a-${APPNAME}.git'
             }
-           sh 'ls -l'
+           sh ' find .'
            }
         }
      }
