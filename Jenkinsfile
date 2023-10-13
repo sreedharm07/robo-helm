@@ -26,7 +26,10 @@ pipeline{
           }
        }
 
-
-
+      stage('installing component'){
+             steps{
+            sh ' helm upgrade -i ${APPNAME} ./CHART  -f APP/helm/${ENV}.yaml '
+                  }
+              }
     }
  }
