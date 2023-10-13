@@ -19,8 +19,17 @@ pipeline{
            dir ('APP'){
              git branch: 'main', url: 'https://github.com/sreedharm07/a-${APPNAME}.git'
             }
-           sh ' pwd '
+           dir ('CHART'){
+              git branch: 'main', url: 'https://github.com/sreedharm07/robo-helm.git'
+                 }
            }
         }
+
+        stage('update kubectl'){
+           steps{
+            sh ' helm install ${APPNAME} ./CHART  --set component=${APPNAME} '
+                  }
+              }
+
      }
  }
