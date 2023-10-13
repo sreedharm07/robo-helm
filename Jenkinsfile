@@ -14,20 +14,20 @@ pipeline{
            }
        }
 
-       stage('get code '){
+       stage('get code'){
          steps{
            dir ('APP'){
              git branch: 'main', url: 'https://github.com/sreedharm07/a-${APPNAME}.git'
             }
            dir ('CHART'){
               git branch: 'main', url: 'https://github.com/sreedharm07/robo-helm.git'
-                 }
-           }
-        }
+            }
+          }
+       }
 
-        stage('update kubectl'){
+        stage('installing component'){
            steps{
-            sh ' helm install ${APPNAME} ./CHART  --set component=${APPNAME} '
+            sh ' helm install ${APPNAME} ./CHART  --set component=${APPNAME}'
                   }
               }
 
