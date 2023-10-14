@@ -5,6 +5,8 @@ pipeline{
    parameters{
      string(name: 'ENV', defaultValue: 'prod', description: 'which environemnt to run ')
      string(name: 'APPNAME', defaultValue: '', description: 'which environemnt to run ')
+     string(name: 'APP_VERSION', defaultValue: '', description: 'which environemnt to run ')
+
        }
 
   stages{
@@ -28,7 +30,7 @@ pipeline{
 
       stage('installing component'){
              steps{
-            sh ' helm upgrade -i ${APPNAME} ./CHART  -f APP/helm/${ENV}.yaml '
+            sh ' helm upgrade -i ${APPNAME} ./CHART  -f APP/helm/${ENV}.yaml --set APP_VERSION=${APP_VERSION}'
                   }
               }
     }
