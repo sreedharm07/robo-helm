@@ -19,7 +19,7 @@ pipeline{
        stage('get code'){
          steps{
            dir ('APP'){
-             git branch: 'main', url: 'https://github.com/sreedharm07/a-${APPNAME}.git'
+             git branch: 'main', url: 'https://github.com/sreedharm07/${APPNAME}.git'
             }
            dir ('CHART'){
               git branch: 'main', url: 'https://github.com/sreedharm07/robo-helm.git'
