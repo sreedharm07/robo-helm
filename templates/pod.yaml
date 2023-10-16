@@ -9,5 +9,5 @@ spec:
     - name: {{ .Values.component }}
       image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{.Values.APP_VERSION}}
   initContainers:
-    - name:  a-in-it-cont-parameters
-      image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/a-in-it-cont-parameters:1.0.2
+    - name:  in-it-cont-parameters
+      image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/in-it-cont-parameters:1.0.2
