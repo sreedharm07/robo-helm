@@ -14,7 +14,7 @@ spec:
          name: common
   initContainers:
    - name:  in-it-cont-parameters
-     image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/in-it-cont-parameters:2.0.18
+     image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/in-it-cont-parameters:2.0.19
      imagePullPolicy: Always
      env:
        - name: PARAMETERS
