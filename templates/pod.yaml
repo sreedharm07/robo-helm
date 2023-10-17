@@ -1,29 +1,28 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: {{.Values.component}}
+  name: {{ .Values.component }}
   labels:
-    app.kubernetes.io/name: {{.Values.component}}
+    app.kubernetes.io/name: {{ .Values.component }}
 spec:
-  serviceAccountName: {{.Values.component}}
+  serviceAccountName: {{ .Values.component }}
   containers:
-   - name: {{.Values.component}}
-     image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/{{.Values.component}}:{{.Values.APP_VERSION}}
-     volumeMounts:
-       - mountPath: /common
-         name: common
+    - name: {{ .Values.component }}
+      image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{ .Values.APP_VERSION }}
+      volumeMounts:
+        - mountPath: /common
+          name: common
   initContainers:
-   - name:  in-it-cont-parameters
-     image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/in-it-cont-parameters:2.0.18
-     imagePullPolicy: Always
-     env:
-       - name: PARAMETERS
-         value: {{.Values.PARAMETERS}}
-     volumeMounts:
-       - mountPath: /common
-         name: common
+    - name: roboshop-aws-ps-init-cont
+      image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/roboshop-aws-ps-init-cont:2.0.18
+      env:
+        - name: PARAMETERS
+          value: {{ .Values.PARAMETERS }}
+      imagePullPolicy: Always
+      volumeMounts:
+        - mountPath: /common
+          name: common
   volumes:
-     - name: common
-       emptyDir:
-         sizeLimit: 20Mi
-
+    - name: common
+      emptyDir:
+        sizeLimit: 5Mi
