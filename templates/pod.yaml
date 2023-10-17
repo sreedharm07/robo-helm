@@ -11,5 +11,13 @@ spec:
      image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/{{.Values.component}}:{{.Values.APP_VERSION}}
   initContainers:
    - name:  in-it-cont-parameters
-     image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/in-it-cont-parameters:2.0.11
-     imagePullPolicy: Always
+     image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/in-it-cont-parameters:2.0.12
+     imagePullPolicy: Alw
+     volumeMounts:
+       - mountPath: /common
+         name: common
+
+  volumes:
+     - name: common
+       emptyDir:
+         sizeLimit: 20Mi
