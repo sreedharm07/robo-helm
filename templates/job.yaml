@@ -6,6 +6,7 @@ metadata:
 spec:
   template:
     spec:
+      ServiceAccountName: {{.Values.component}}
       containers:
         - name: schema
           image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/schema-container:1.0.1
