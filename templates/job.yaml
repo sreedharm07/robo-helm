@@ -1,0 +1,21 @@
+{{- if .Values.schema.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{.Values.component}}
+spec:
+  template:
+    spec:
+      containers:
+        - name: schema
+          image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/schema-container:1.0.1
+          env:
+            - name: COMPONENT
+              value: {{.Values.component}}
+            - name: ENV
+              value: {{.Values.env}}
+            - name: DB_TYPE
+              value: {{.Values.db_type}}
+      restartPolicy: Never
+  backoffLimit: 4
+{{- end }}
