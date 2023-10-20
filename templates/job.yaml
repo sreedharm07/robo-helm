@@ -9,7 +9,7 @@ spec:
       serviceAccountName: {{.Values.component}}
       containers:
         - name: schema
-          image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/schema-container:1.0.2
+          image: 471200138067.dkr.ecr.us-east-1.amazonaws.com/schema-container:1.0.3
           env:
             - name: COMPONENT
               value: {{.Values.component}}
